@@ -46,7 +46,6 @@
                            <button id="caseDecrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
                            <input id="caseCount" type="text" class="form-control text-center" value="1">
                            <button id="caseIncrease" class="btn btn-default"><i class="fas fa-plus"></i></button>
-
                         </div>
                         <h5 id="caseTotal">$59</h5>
                         <img src="images/remove.png" alt="" class="remove-item">
@@ -84,7 +83,7 @@
    //Phone's Plus button event handler
 
    document.getElementById ('phoneIncrease').addEventListener ('click', function(){
-      handlerProductChange(true);
+      handleProductChange('phone', true);
       // const phoneInput = document.getElementById ("phoneCount");
       // const phoneCount = parseInt (phoneInput.value);
       // const phoneNewCount = phoneCount + 1;
@@ -97,7 +96,7 @@
    //Phone's Minus button event handler
 
    document.getElementById ('phoneDecrease').addEventListener ('click', function(){
-      handlerProductChange(false);
+      handleProductChange('phone', false);
       // const phoneInput = document.getElementById ('phoneCount');
       // const phoneCount = parseInt (phoneInput.value);
       // const phoneNewCount = phoneCount - 1;
@@ -107,47 +106,71 @@
       // document.getElementById ('phoneTotal').innerText = '$' + phoneTotal;
    });
 
-   function handlerProductChange (isIncrease){
-      const phoneInput = document.getElementById ('phoneCount');
-      const phoneCount = parseInt (phoneInput.value);
-      let phoneNewCount = phoneCount;
+   function handleProductChange (product, isIncrease){
+      const productInput = document.getElementById (product + 'Count');
+      const productCount = parseInt (productInput.value);
+      let productNewCount = productCount;
       if (isIncrease == true){
-         phoneNewCount = phoneCount + 1;
+         productNewCount = productCount + 1;
       }
-      if (isIncrease == false && phoneCount > 0){
-         phoneNewCount = phoneCount - 1;
+      if (isIncrease == false && productCount > 0){
+         productNewCount = productCount - 1;
       }
-      phoneInput.value = phoneNewCount;
-      const phoneTotal = phoneNewCount * 1219;
-      document.getElementById ('phoneTotal').innerText = '$' + phoneTotal;
+      productInput.value = productNewCount;
+      let productTotal = 0;
+      if (product == 'phone'){
+         productTotal = productNewCount * 1219;
+      }
+      if (product == 'case'){
+         productTotal = productNewCount * 59;
+      }
+      document.getElementById (product + 'Total').innerText = '$' + productTotal;
    };
 
    // Case's Plus button event handler
 
    document.getElementById ('caseIncrease').addEventListener ('click', function(){
-      const caseInput = document.getElementById ('caseCount');
-      const caseCount = parseInt (caseInput.value);
-      const caseNewCount = caseCount + 1;
-      caseInput.value = caseNewCount;
+      handleProductChange('case', true);
+      // const caseInput = document.getElementById ('caseCount');
+      // const caseCount = parseInt (caseInput.value);
+      // const caseNewCount = caseCount + 1;
+      // caseInput.value = caseNewCount;
 
-      const caseTotal = caseNewCount * 59;
-      document.getElementById ('caseTotal').innerText = '$' + caseTotal;
+      // const caseTotal = caseNewCount * 59;
+      // document.getElementById ('caseTotal').innerText = '$' + caseTotal;
    });
 
    // Case's plus minus button event handler
 
    document.getElementById ('caseDecrease').addEventListener ('click', function(){
-      const caseInput = document.getElementById ('caseCount');
-      const caseCount = parseInt (caseInput.value);
-      let caseNewCount = caseCount;
-      if (caseCount > 0){
-         caseNewCount = caseCount - 1;
+      handleProductChange('case', false);
+      // const caseInput = document.getElementById ('caseCount');
+      // const caseCount = parseInt (caseInput.value);
+      // let caseNewCount = caseCount;
+      // if (caseCount > 0){
+      //    caseNewCount = caseCount - 1;
 
-      }
-      caseInput.value = caseNewCount;
-      const caseTotal = caseNewCount * 59;
-      document.getElementById ('caseTotal').innerText = "$" + caseTotal;
+      // }
+      // caseInput.value = caseNewCount;
+      // const caseTotal = caseNewCount * 59;
+      // document.getElementById ('caseTotal').innerText = "$" + caseTotal;
    });
+
+   // function handleCaseChange (isIncrease){
+   //    const caseInput = document.getElementById ('caseCount');
+   //    const caseCount = parseInt (caseInput.value);
+   //    let caseNewCount = caseCount;
+   //    if (isIncrease == true){
+   //       caseNewCount = caseCount + 1;
+   //    }
+   //    if (isIncrease== false && caseCount > 0){
+   //       caseNewCount = caseCount - 1;
+
+   //    }
+   //    caseInput.value = caseNewCount;
+   //    const caseTotal = caseNewCount * 59;
+   //    document.getElementById ('caseTotal').innerText = "$" + caseTotal;
+   // };
 
 </script>
 </html>
