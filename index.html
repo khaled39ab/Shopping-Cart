@@ -83,25 +83,42 @@
 
    //Phone's Plus button event handler
    document.getElementById ('phoneIncrease').addEventListener ('click', function(){
-      const phoneInput = document.getElementById ("phoneCount");
-      const phoneCount = parseInt (phoneInput.value);
-      const phoneNewCount = phoneCount + 1;
-      phoneInput.value = phoneNewCount;
+      handlerProductChange(true);
+      // const phoneInput = document.getElementById ("phoneCount");
+      // const phoneCount = parseInt (phoneInput.value);
+      // const phoneNewCount = phoneCount + 1;
+      // phoneInput.value = phoneNewCount;
 
-      const phoneTotal = phoneNewCount * 1219;
-      document.getElementById ('phoneTotal').innerText = '$' + phoneTotal;
-   })
+      // const phoneTotal = phoneNewCount * 1219;
+      // document.getElementById ('phoneTotal').innerText = '$' + phoneTotal;
+   });
 
    //Phone's Minus button event handler
    document.getElementById ('phoneDecrease').addEventListener ('click', function(){
+      handlerProductChange(false);
+      // const phoneInput = document.getElementById ('phoneCount');
+      // const phoneCount = parseInt (phoneInput.value);
+      // const phoneNewCount = phoneCount - 1;
+      // phoneInput.value = phoneNewCount;
+
+      // const phoneTotal = phoneNewCount * 1219;
+      // document.getElementById ('phoneTotal').innerText = '$' + phoneTotal;
+   });
+
+   function handlerProductChange (isIncrease){
       const phoneInput = document.getElementById ('phoneCount');
       const phoneCount = parseInt (phoneInput.value);
-      const phoneNewCount = phoneCount - 1;
+      let phoneNewCount = phoneCount;
+      if (isIncrease == true){
+         phoneNewCount = phoneCount + 1;
+      }
+      if (isIncrease == false && phoneCount > 0){
+         phoneNewCount = phoneCount - 1;
+      }
       phoneInput.value = phoneNewCount;
-
       const phoneTotal = phoneNewCount * 1219;
       document.getElementById ('phoneTotal').innerText = '$' + phoneTotal;
-   })
+   }
 
 </script>
 </html>
