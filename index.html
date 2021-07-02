@@ -43,12 +43,12 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="caseDecrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="caseCount" type="text" class="form-control text-center" value="1">
+                           <button id="caseIncrease" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5 id="caseTotal">$59</h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -82,6 +82,7 @@
 <script>
 
    //Phone's Plus button event handler
+
    document.getElementById ('phoneIncrease').addEventListener ('click', function(){
       handlerProductChange(true);
       // const phoneInput = document.getElementById ("phoneCount");
@@ -94,6 +95,7 @@
    });
 
    //Phone's Minus button event handler
+
    document.getElementById ('phoneDecrease').addEventListener ('click', function(){
       handlerProductChange(false);
       // const phoneInput = document.getElementById ('phoneCount');
@@ -118,7 +120,34 @@
       phoneInput.value = phoneNewCount;
       const phoneTotal = phoneNewCount * 1219;
       document.getElementById ('phoneTotal').innerText = '$' + phoneTotal;
-   }
+   };
+
+   // Case's Plus button event handler
+
+   document.getElementById ('caseIncrease').addEventListener ('click', function(){
+      const caseInput = document.getElementById ('caseCount');
+      const caseCount = parseInt (caseInput.value);
+      const caseNewCount = caseCount + 1;
+      caseInput.value = caseNewCount;
+
+      const caseTotal = caseNewCount * 59;
+      document.getElementById ('caseTotal').innerText = '$' + caseTotal;
+   });
+
+   // Case's plus minus button event handler
+
+   document.getElementById ('caseDecrease').addEventListener ('click', function(){
+      const caseInput = document.getElementById ('caseCount');
+      const caseCount = parseInt (caseInput.value);
+      let caseNewCount = caseCount;
+      if (caseCount > 0){
+         caseNewCount = caseCount - 1;
+
+      }
+      caseInput.value = caseNewCount;
+      const caseTotal = caseNewCount * 59;
+      document.getElementById ('caseTotal').innerText = "$" + caseTotal;
+   });
 
 </script>
 </html>
