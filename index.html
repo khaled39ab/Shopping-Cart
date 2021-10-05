@@ -106,27 +106,6 @@
       // document.getElementById ('phoneTotal').innerText = '$' + phoneTotal;
    });
 
-   function handleProductChange (product, isIncrease){
-      const productInput = document.getElementById (product + 'Count');
-      const productCount = parseInt (productInput.value);
-      let productNewCount = productCount;
-      if (isIncrease == true){
-         productNewCount = productCount + 1;
-      }
-      if (isIncrease == false && productCount > 0){
-         productNewCount = productCount - 1;
-      }
-      productInput.value = productNewCount;
-      let productTotal = 0;
-      if (product == 'phone'){
-         productTotal = productNewCount * 1219;
-      }
-      if (product == 'case'){
-         productTotal = productNewCount * 59;
-      }
-      document.getElementById (product + 'Total').innerText = '$' + productTotal;
-   };
-
    // Case's Plus button event handler
 
    document.getElementById ('caseIncrease').addEventListener ('click', function(){
@@ -165,12 +144,32 @@
    //    }
    //    if (isIncrease== false && caseCount > 0){
    //       caseNewCount = caseCount - 1;
-
    //    }
    //    caseInput.value = caseNewCount;
    //    const caseTotal = caseNewCount * 59;
    //    document.getElementById ('caseTotal').innerText = "$" + caseTotal;
    // };
+
+   function handleProductChange (product, isIncrease){
+      const productInput = document.getElementById (product + 'Count');
+      const productCount = parseInt (productInput.value);
+      let productNewCount = productCount;
+      if (isIncrease == true){
+         productNewCount = productCount + 1;
+      }
+      if (isIncrease == false && productCount > 0){
+         productNewCount = productCount - 1;
+      }
+      productInput.value = productNewCount;
+      let productTotal = 0;
+      if (product == 'phone'){
+         productTotal = productNewCount * 1219;
+      }
+      if (product == 'case'){
+         productTotal = productNewCount * 59;
+      }
+      document.getElementById (product + 'Total').innerText = '$' + productTotal;
+   };   
 
 </script>
 </html>
